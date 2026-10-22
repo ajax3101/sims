@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+@theme inline {
+  --font-sans: "Geist Variable", system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* the card-file world */
+  --color-rail: var(--rail);
+  --color-rail-foreground: var(--rail-foreground);
+  --color-rail-muted: var(--rail-muted);
+  --color-rail-active: var(--rail-active);
+  --color-strip: var(--strip);
+  --color-sun: var(--sun);
+  --color-course-1: var(--course-1);
+  --color-course-2: var(--course-2);
+  --color-course-3: var(--course-3);
+  --color-course-4: var(--course-4);
+  --color-course-5: var(--course-5);
+  --color-course-6: var(--course-6);
+  --color-course-ink: var(--course-ink);
+  --color-signal-academic: var(--signal-academic);
+  --color-signal-tuition: var(--signal-tuition);
+  --color-signal-leave: var(--signal-leave);
+  --color-signal-expelled: var(--signal-expelled);
+  --color-signal-graduated: var(--signal-graduated);
+  --color-signal-fresh: var(--signal-fresh);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+/* Light office scene: daytime, fluorescent ceiling light, desk monitors. */
+:root {
+  /* Cheerful card file: vivid teal cabinet, mint working ground, saturated index tabs, a sun accent. */
+  --hue: 182;
+  --background: oklch(0.976 0.014 var(--hue));
+  --foreground: oklch(0.24 0.03 210);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(0.47 0.105 188);
+  --primary-foreground: oklch(0.99 0.005 188);
+  --secondary: oklch(0.935 0.03 var(--hue));
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.945 0.022 var(--hue));
+  --muted-foreground: oklch(0.45 0.035 205);
+  --accent: oklch(0.93 0.045 var(--hue));
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.53 0.2 25);
+  --border: oklch(0.88 0.025 var(--hue));
+  --input: oklch(0.84 0.03 var(--hue));
+  --ring: oklch(0.55 0.13 188);
+  --radius: 0.5rem;
+
+  /* vivid teal cabinet rail */
+  --rail: oklch(0.37 0.085 192);
+  --rail-foreground: oklch(0.985 0.01 192);
+  --rail-muted: oklch(0.87 0.045 192);
+  --rail-active: oklch(0.47 0.1 192);
+  /* filter strip: mint field */
+  --strip: oklch(0.925 0.05 172);
+  /* sun accent: active wayfinding and selection, never body text */
+  --sun: oklch(0.87 0.16 88);
+
+  /* index-tab hues, one per course */
+  --course-1: oklch(0.82 0.12 240);
+  --course-2: oklch(0.85 0.15 145);
+  --course-3: oklch(0.89 0.15 95);
+  --course-4: oklch(0.8 0.13 38);
+  --course-5: oklch(0.81 0.12 305);
+  --course-6: oklch(0.85 0.11 198);
+  --course-ink: oklch(0.24 0.035 230);
+
+  /* signals clipped on the visible margin */
+  --signal-academic: oklch(0.57 0.21 25);
+  --signal-tuition: oklch(0.76 0.17 70);
+  --signal-leave: oklch(0.56 0.18 300);
+  --signal-expelled: oklch(0.5 0.03 250);
+  --signal-graduated: oklch(0.54 0.12 235);
+  --signal-fresh: oklch(0.72 0.19 145);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scrollbar-gutter: stable;
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+  ::selection {
+    background: var(--sun);
+    color: var(--course-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.78 0.02 var(--hue)) transparent;
+    caret-color: var(--primary);
+  }
+  a {
+    text-underline-offset: 0.2em;
+  }
+  aside {
+    scrollbar-color: var(--rail-active) transparent;
+  }
+  .tabular,
+  td,
+  th {
+    font-variant-numeric: tabular-nums;
+  }
+}

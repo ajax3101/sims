@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Private student records and local design review files
+/input_data/
+/.impeccable/
+
+# Tests and local tooling
+.pytest_cache/
+.coverage
+coverage/
+htmlcov/
+.DS_Store
+
+# Frontend dependencies and build output
+node_modules/
+frontend/dist/
